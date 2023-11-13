@@ -18,7 +18,7 @@ A simple yet effective web-based timer application built with Flask, HTML, JavaS
 4. **Stop Timer**: Completely halt the timer before it ends.
 5. **Reset Timer**: Clear the timer and start afresh.
 6. **Alarm Sound**: Hear an alarm when the timer hits zero.
-7. **Auto-Click Feature**: When the timer ends, it triggers an automated mouse click at predefined screen coordinates (X: 499, Y: 1329).
+7. **Auto-Click Feature**: When the timer ends, it triggers an automated mouse click at predefined screen coordinates (X:-1844, Y=736).
 
 ## Tech Stack
 
@@ -32,4 +32,4 @@ To get this timer up and running, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/timer-app.git
+   git clone https://github.com/johame72/EZ_Timer.git
