@@ -1,4 +1,4 @@
-# ⏲️ Flask Timer App
+# ⏲️ EZ_TIMER Flask Timer App
 
 A simple yet effective web-based timer application built with Flask, HTML, JavaScript, and a pinch of Python magic! Set a timer and get productive! 🚀
 
