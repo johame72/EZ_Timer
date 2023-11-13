@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Timer</title>
+    <script>
+        var interval;
+        var totalSeconds;
+        var isPaused = false;
+
+        function startTimer() {
+            if (!interval || isPaused) {
+                isPaused = false;
+                var minutes = parseInt(document.getElementById('minutes').value);
+                var seconds = parseInt(document.getElementById('seconds').value);
+                totalSeconds = (minutes * 60) + seconds;
+
+                interval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function updateTimer() {
+            var minutes = parseInt(totalSeconds / 60, 10);
+            var seconds = parseInt(totalSeconds % 60, 10);
+
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+
+            document.getElementById('timerDisplay').textContent = minutes + ":" + seconds;
+
+            if (--totalSeconds < 0) {
+                clearInterval(interval);
+                document.getElementById('alarmSound').play();
+                fetch('/click');
+            }
+        }
+
+        function pauseTimer() {
+            isPaused = true;
+            clearInterval(interval);
+        }
+
+        function stopTimer() {
+            clearInterval(interval);
+            document.getElementById('timerDisplay').textContent = "00:00";
+        }
+
+        function resetTimer() {
+            clearInterval(interval);
+            totalSeconds = 0;
+            document.getElementById('timerDisplay').textContent = "00:00";
+            document.getElementById('minutes').value = "";
+            document.getElementById('seconds').value = "";
+            isPaused = false;
+        }
+    </script>
+</head>
+<body>
+    <h2>Set Timer</h2>
+    <input type="number" id="minutes" placeholder="Minutes">
+    <input type="number" id="seconds" placeholder="Seconds">
+    <button onclick="startTimer()">Start</button>
+    <button onclick="pauseTimer()">Pause</button>
+    <button onclick="stopTimer()">Stop</button>
+    <button onclick="resetTimer()">Reset</button>
+    <h1 id="timerDisplay">00:00</h1>
+    <audio id="alarmSound" src="/static/alarm.mp3"></audio>
+</body>
+</html>
