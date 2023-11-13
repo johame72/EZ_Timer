@@ -9,6 +9,7 @@ def index():
 
 @app.route('/click')
 def click():
+    print("Click route called")
     pyautogui.click(x=-1844, y=736)
     return "Clicked"
 
